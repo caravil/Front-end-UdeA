@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.rtl.min.css" />
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="container w-75 bg-#026937 mt-3 mb-3 rounded-3 shadow">
+    <div class="row align-items-stretch">
+  
+      <!-- Imagen lateral -->
+      <div class="col bg d-none d-lg-block col-md-5 col-lg-6 col-xl-7 rounded-end"></div>
+      <div class="col bg-white p-5 rounded-start">
+  
+        <!-- Logo superior -->
+        <header class="text-center">
+          <img src="assets/facultad-salud.png" width="284px" height="120px">
+        </header>
+        <br>
+
+        <!-- Validación -->
+        <form class="needs-validation" novalidate action="home.html">
+  
+          <!-- Formulario ingreso -->
+          <div class="mb-4">
+            <label for="validationCustomUsername" class="form-label">Usuario</label>
+            <div class="input-group has-validation">
+              <input type="text" class="form-control rounded" id="validationCustomUsername"
+                aria-describedby="inputGroupPrepend" required>
+              <span class="input-group-text rounded" id="inputGroupPrepend">@udea.edu.co</span>
+              <div class="invalid-feedback">
+                Por favor ingrese el usuario.
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="password" required>
+              <div class="invalid-feedback">
+                Por favor ingrese la contraseña.
+              </div>
+            </div>
+          </div>
+  
+          <div class= "g-recaptcha mx-auto"  data-sitekey= "6LfEb5wjAAAAACKTd6D3vTP0txLK5Gu60jT5IKVO" ></div>
+          <br>
+          <!-- Botón envió formulario -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+          
+          <!-- Botón recuperar contraseña -->
+          <label class="form-label">¿Olvidaste tu contraseña?</label>
+          <div class="d-grid margin-bottom-5">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#modalRecuperar">Recuperar</button>
+          </div>
+        </form>
+  
+        <!-- Modal recuperar contraseña -->
+        <div class="modal fade" id="modalRecuperar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="modalRecuperarFuente" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-udea">
+                <h5 class="modal-title text-white" id="modalRecuperarFuente">Restablecer Contraseña</h5>
+              </div>
+              <div class="modal-body">
+                <form class="needs-validation" novalidate action="index.html">
+                  <div class="mb-4">
+                    <label for="validationCustomUseridentification" class="form-label">Numero de Identificación</label>
+                    <div class="input-group has-validation">
+                      <input type="text" class="form-control rounded" id="validationCustomUseridentification"
+                        aria-describedby="inputGroupPrepend" required>
+                      <div class="invalid-feedback">
+                        Por favor ingrese el numero de documento.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label for="validationCustomUsermail" class="form-label">Correo electrónico</label>
+                    <div class="input-group has-validation">
+                      <input type="email" class="form-control rounded" id="validationCustomUsermail"
+                        aria-describedby="inputGroupPrepend" required>
+                      <div class="invalid-feedback">
+                        Por favor ingrese el correo electrónico.
+                      </div>
+                    </div>
+                  </div>
+              </div>
+  
+              <!-- Botones modal -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-secondary">Enviar</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <footer>
+    <div>
+      <p class="text-center text-black">© 2022 - Todos los derechos reservados</p>
+    </div>
+  </footer>
+</body>
+
+
+
+<!-- Estilos -->
+
+<style>
+  .bg {
+    background-image: url("assets/background.jpg");
+    background-position: right right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+</style>
+
+<!-- Bootstrap -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Recaptcha -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<!-- Funciones -->
+<script src="main.js"></script>
+
+</html>

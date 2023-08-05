@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.rtl.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+  <!-- DataTable -->
+  <link rel="stylesheet" href="node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css">
+
+  <!-- flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <title>eventos</title>
+</head>
+
+<body>
+
+  <!-- Div contenedor de la tabla -->
+  <div class="container my-4 ">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <table id="datatableEvents" class="table table-bordered table-responsive-md " cellspacing="0" width="100%">
+         
+          <!-- Datos fijos de la tabla dinámica -->
+          <thead>
+            <tr>
+              <th>Tipo Evento</th>
+              <th>Nombre</th>
+              <th>Objeto</th>
+              <th>Fecha inicio</th>
+              <th>Fecha final</th>
+              <th>Duración</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Michael Silva</td>
+              <td>Marketing Designer</td>
+              <td>London</td>
+              <td>66</td>
+              <td>2012/11/27</td>
+              <td>$198,500</td>
+            </tr>
+            <tr>
+              <td>Michael Silva</td>
+              <td>Marketing Designer</td>
+              <td>London</td>
+              <td>66</td>
+              <td>2012/11/27</td>
+              <td>$198,500</td>
+            </tr>
+            <tr>
+              <td>Paul Byrd</td>
+              <td>Chief Financial Officer (CFO)</td>
+              <td>New York</td>
+              <td>64</td>
+              <td>2010/06/09</td>
+              <td>$725,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de agregar, editar, eliminar, cancelar y reporte -->
+  <div class="container my-4">
+    <div class="row col-lg-6 m-auto">
+      <div class="d-grid gap-2 d-md-flex d-grid gap-2 d-md-flex justify-content-md-center mt-2 mb-2 align-bottom rounded-3 ">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#agregarModal">
+          <i class="bi bi-plus-lg"> Agregar</i>
+        </button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#reporteModal">
+          <i class="bi bi-file-earmark-text"> Reporte</i>
+        </button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#editarModal">
+          <i class="bi bi-pencil-square"> Editar</i>
+        </button>
+        <button type="button" class="btn btn-danger " data-bs-toggle="modal"
+          data-bs-target="#cancelaciónModal">
+          <i class="bi bi-x-circle"> Cancelar</i>
+        </button>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal-Form-AgregarEvento -->
+  <div class="modal fade" id="agregarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="agregarModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-udea">
+          <h5 class="modal-title text-white" id="agregarEvento">Agregar evento</h5>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate action="events.html">
+            <div class="mb-4">
+              <label for="ev_tipoEvento" class="form-label">Tipo de Evento</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control rounded" id="ev_tipoEvento" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ev_nombre" class="form-label">Nombre</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control rounded" id="ev_nombre" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ev_objeto" class="form-label">Objeto</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control rounded" id="ev_objeto" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ev_fecha" class="form-label">Fecha</label>
+              <div class="input-group has-validation">
+                <input type="fecha" class="form-control rounded" id="ev_fecha" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ev_horaInicio" class="form-label">Hora de inicio</label>
+              <div class="input-group has-validation">
+                <input type="horaInicio" class="form-control rounded" id="ev_horaInicio" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ev_horaFinal" class="form-label">Hora de finalización</label>
+              <div class="input-group has-validation">
+                <input type="horaFinal" class="form-control rounded" id="ev_horaFinal" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ev_duracion" class="form-label">Duración (cantidad de horas)</label>
+              <div class="input-group has-validation">
+                <input type="number" class="form-control rounded" id="ev_duracion" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor diligenciar el campo.
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Botones-Modal-Form-AgregarEvento -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-secondary">Enviar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal-Form-Reporte -->
+  <div class="modal fade" id="reporteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="reporteModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-udea">
+          <h5 class="modal-title text-white" id="reporteActividades">Reporte Actividades</h5>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate action="events.html">
+            <div class="mb-4">
+              <label for="ac_tipoActividad" class="form-label">Tipo de actividad</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control rounded" id="ac_tipoActividad"
+                  aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                  <div class="invalid-feedback">
+                    Por favor ingrese la actividad a realizar.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_nombreActividad" class="form-label">Nombre actividad</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control rounded" id="ac_nombreActividad"
+                  aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                  Por favor ingrese el nombre de la actividad a realizar.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_responsables" class="form-label">Responsables</label>
+              <div class="input-group has-validation">
+                <textarea class="form-control" name="ac_responsables" id="ac_responsables" cols="20" rows="3"
+                  aria-describedby="inputGroupPrepend" required></textarea>
+                <div class="invalid-feedback">
+                  Por favor ingrese los Responsables.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_descripcion" class="form-label">Descripción</label>
+              <div class="input-group has-validation">
+                <textarea class="form-control" name="ac_descripción" id="ac_descripcion" cols="10" rows="3"
+                  aria-describedby="inputGroupPrepend" required></textarea>
+                <div class="invalid-feedback">
+                  Por favor ingrese la descripción.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_horaInicio" class="form-label">Hora de inicio</label>
+              <div class="input-group has-validation">
+                <input type="horaInicio" class="form-control rounded" id="ac_horaInicio" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor ingrese la hora.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_horaFinal" class="form-label">Hora final</label>
+              <div class="input-group has-validation">
+                <input type="horaFinal" class="form-control rounded" id="ac_horaFinal" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor ingrese la hora.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_fecha" class="form-label">Fecha</label>
+              <div class="input-group has-validation">
+                <input type="fecha" class="form-control rounded" id="ac_fecha" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor ingrese la fecha.
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ac_lugar" class="form-label">Locación</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control rounded" id="ac_lugar" aria-describedby="inputGroupPrepend"
+                  required>
+                <div class="invalid-feedback">
+                  Por favor ingrese la locación.
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- Botones-Modal-Form-Reporte -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-secondary">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal-Form-Editar -->
+  <div class="modal fade" id="editarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="editarModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-udea">
+          <h5 class="modal-title text-white" id="agregarEvento">Editar evento</h5>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate action="events.html">
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Seleccionar Evento</label>
+              </div>
+              <select class="form-select" id="inputGroupSelect01">
+                <option selected>...</option>
+                <option value="1">Uno</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="ed_tipoEvento" class="form-label">Tipo de Evento</label>
+              <div class="input-group">
+                <input type="text" class="form-control rounded" id="ed_tipoEvento">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ed_nombre" class="form-label">Nombre</label>
+              <div class="input-group">
+                <input type="text" class="form-control rounded" id="ed_nombre">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ed_objeto" class="form-label">Objeto</label>
+              <div class="input-group">
+                <input type="text" class="form-control rounded" id="ed_objeto">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ed_fecha" class="form-label">Fecha</label>
+              <div class="input-group">
+                <input type="fecha" class="form-control rounded" id="ed_fecha">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ed_horaInicio" class="form-label">Hora de inicio</label>
+              <div class="input-group">
+                <input type="horaInicio" class="form-control rounded" id="ed_horaInicio">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ed_horaFinal" class="form-label">Hora de finalización</label>
+              <div class="input-group">
+                <input type="horaFinal" class="form-control rounded" id="ed_horaFinal">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="ed_duracion" class="form-label">Duración (cantidad de horas)</label>
+              <div class="input-group">
+                <input type="number" class="form-control rounded" id="ed_duracion">
+              </div>
+            </div>
+
+            <!-- Botones-Modal-Form-Cancelar -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-secondary">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal-Form-Cancelar -->
+  <div class="modal fade" id="cancelaciónModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="cancelaciónModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-udea">
+          <h5 class="modal-title text-white" id="cancelarActividad">Cancelar Evento</h5>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate action="events.html">
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Seleccionar Evento</label>
+              </div>
+              <select class="form-select" id="inputGroupSelect01">
+                <option selected>...</option>
+                <option value="1">Uno</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="ac_tipoActividad" class="form-label">Motivo de cancelación</label>
+              <div class="input-group has-validation">
+                <textarea class="form-control" name="motivoCancelación" id="motivoCancelación" cols="30" rows="10"
+                  aria-describedby="inputGroupPrepend" required></textarea>
+                <div class="invalid-feedback">
+                  Por favor ingrese el motivo de la cancelación.
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Botones-Modal-Form-Cancelar -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-secondary">Enviar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<!-- Funciones -->
+<script src="main.js"></script>
+
+<!-- Bootstrap -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+<!-- DataTable -->
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="node_modules/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+
+<!-- flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+<script>
+  flatpickr("input[type=horaInicio]", {
+    enableTime: true,
+    dateFormat: "H:i",
+  });
+  flatpickr("input[type=horaFinal]", {
+    enableTime: true,
+    dateFormat: "H:i",
+  });
+  flatpickr("input[type=fecha]", {
+    enableTime: true,
+    dateFormat: "Y-m-d",
+  });
+
+  $(document).ready(function () { 
+  $('#datatableEvents').dataTable({ responsive: true }); });
+</script>
+</html>

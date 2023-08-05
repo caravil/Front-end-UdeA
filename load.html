@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Cargar</title>
+</head>
+
+
+<body>
+    <div>
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="files">Cargar archivo CSV</label>
+                <br>
+                <input type="file" id="files" class="form-control" accept=".csv" required />
+            </div>
+            <br>
+            <div class="form-group dt-center">
+                <button type="submit" id="submit-file" class="btn btn-primary">Subir</button>
+            </div>
+            <br>
+        </form>
+    </div>
+</body>
+
+<!-- Bootstrap -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Parse -->
+<script src="node_modules/papaparse/papaparse.min.js"></script>
+
+<!-- jQuery -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+<!-- Funciones -->
+<script src="main.js"></script>
+
+<script>
+// función para cargar el archivo cvs
+$('#submit-file').on("click", function (e) {
+    e.preventDefault();
+    $('#files').parse({
+        config: {
+            delimiter: "auto",
+            complete: displayHTMLTable,
+        },
+        before: function (file, inputElem) {
+        },
+        error: function (err, file) {
+        },
+        complete: function () {
+        }
+    });
+});
+</script> 
+</html>
